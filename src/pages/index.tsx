@@ -1,3 +1,4 @@
+import {GetStaticProps} from 'next';
 
 /* 
 Requisição no modelo SPA
@@ -43,10 +44,18 @@ Requisição no modelo SSG
 
 */
 
+interface IEpisode {
+  id: string;
+  title: string;
+  members: string;
+}
 
-export default function Home(props) {
-  
-  
+interface IHomeProps {
+  episodes: IEpisode[]
+}
+
+export default function Home(props: IHomeProps) {
+
 
   return (
     <h1>Index</h1>
@@ -54,7 +63,7 @@ export default function Home(props) {
 }
 
 
-export async function getStaticProps() {
+export const getStaticProps: GetStaticProps =  async () => {
   const response = await fetch('http://localhost:3333/episodes')
   const data = await response.json()
 
