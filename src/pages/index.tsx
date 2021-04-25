@@ -64,7 +64,7 @@ export default function Home(props: IHomeProps) {
 
 
 export const getStaticProps: GetStaticProps =  async () => {
-  const response = await fetch('http://localhost:3333/episodes')
+  const response = await fetch('http://localhost:3333/episodes?_limit=12')
   const data = await response.json()
 
   return {
